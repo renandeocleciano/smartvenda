@@ -1,0 +1,5 @@
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Domain\bin\Release\SmartVendas.Domain.dll
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Domain\bin\Release\SmartVendas.Domain.pdb
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Domain\obj\Release\SmartVendas.Domain.csprojResolveAssemblyReference.cache
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Domain\obj\Release\SmartVendas.Domain.dll
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Domain\obj\Release\SmartVendas.Domain.pdb

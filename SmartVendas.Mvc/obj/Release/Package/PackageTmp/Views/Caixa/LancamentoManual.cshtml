@@ -1,0 +1,51 @@
+﻿@using SmartVendas.Application.ViewModels.Enumerators;
+
+@model SmartVendas.Application.ViewModels.LancamentoCaixaViewModel
+
+@{
+    ViewBag.Title = "Lançamento Manual de Caixa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h5>Caixa aberto em:  <b>@Model.Caixa.Abertura.ToString("dd/MM/yyyy HH:mm:ss")</b></h5>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.CaixaId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Tipo, Enum.GetValues(typeof(TipoLancamentoCaixaViewModel)).Cast<TipoLancamentoCaixaViewModel>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }), new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lançar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}

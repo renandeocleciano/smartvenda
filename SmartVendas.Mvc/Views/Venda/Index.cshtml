@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "Informe o produto e a quantidade";
+}
+
+@using (Html.BeginForm("Venda", "Venda"))
+{
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="control-label">Produto</label>
+                @Html.DropDownList("ProdutoId", (SelectList)ViewBag.Produto, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-lg-1">
+            <div class="form-group">
+                <label class="control-label">Quantidade</label>
+                <input type="text" class="form-control" placeholder="0" id="qtd" />
+            </div>
+        </div>
+        <div class="col-lg-1">
+            <div class="form-group">
+                <label class="control-label">&nbsp;</label>
+                <a href="#" class="btn btn-primary btn-incluir-produto">Incluir</a>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-lg-6">
+            <fieldset>
+                <legend>Produtos Escolhidos</legend>
+                <table class="table" id="table">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Valor</th>
+                            <th>Qtd</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyPedido"></tbody>
+                </table>
+            </fieldset>
+        </div>
+        <div class="col-lg-6">
+            <fieldset>
+                <legend>Fechamento</legend>
+                <table class="table" id="table_fechamento">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Cpf</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@ViewBag.NomeCliente</td>
+                            <td>@ViewBag.Cpf</td>
+                            <td>R$ <label id="labelSubTotal">0</label></td>
+                            <td style="text-align: right">
+                                <input type="submit" value="Fechar Pedido" class="btn btn-success" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+    </div>
+
+
+<input type="hidden" name="ClienteId" value="@Request.QueryString["cliente"]"/>
+<input type="hidden" name="ProdutoQuantidade" id="ProdutoQuantidade" value="" />
+
+}
+
+@section styles{
+    
+    <link href="~/Content/vendors/select2/dist/css/select2.min.css" rel="stylesheet" />
+
+    }
+
+@section scripts{
+
+<script src="~/Content/vendors/select2/dist/js/select2.min.js"></script>
+
+    <script>
+        var cache = new Object;
+
+        function GetObjectInJsonArray(data, value, key) {
+            var obj;
+            $.each(data, function (i, v) {
+                if (v[key] == value) {
+                    obj = v;
+                }
+            });
+            return obj;
+        }
+
+        function AtualizarDados() {
+            var $tr = $("#tbodyPedido").find("tr"),
+                total = 0,
+                itens = [];
+            $tr.each(function() {
+                var $tdTotal = $(this).find('td').eq(3).text().replace("R$ ", ""),
+                item = new Object();
+                total = parseFloat($tdTotal) + parseFloat(total);
+                item.ProdutoId = $(this).data("id");
+                item.Quantidade = parseInt($(this).find('td').eq(2).text());
+                itens.push(item);
+            });
+            $("#labelSubTotal").text(total.toFixed(2));
+            $("#ProdutoQuantidade").val(JSON.stringify(itens));
+        }
+
+        function RemoverProduto(el) {
+            $(el).closest('tr').remove();
+            AtualizarDados();
+        }
+
+        $(document).ready(function () {
+            $("select").select2({
+                placeholder: "Selecione...",
+                allowClear: true
+            });
+
+            cache.Produtos = JSON.parse('@Html.Raw(@ViewBag.ProdutoJson)');
+            $(".btn-incluir-produto").click(function (e) {
+                var $produtoId = $("#ProdutoId option:selected").val(),
+                    $produto = GetObjectInJsonArray(cache.Produtos, $produtoId, "ProdutoId"),
+                    $qtd = $("#qtd").val(),
+                    $total = parseFloat($produto.Valor) * parseFloat($qtd),
+                    html = "";
+                if ($qtd.length > 0) {
+                    html += "<tr data-id='" + $produtoId + "'>";
+                    html += "<td>" + $produto.Nome + "</td>";
+                    html += "<td>R$ " + $produto.Valor.toFixed(2) + "</td>";
+                    html += "<td>" + $qtd + "</td>";
+                    html += "<td>R$ " + $total.toFixed(2) + "</td>";
+                    html += "<td><a href='#' onclick=\"RemoverProduto(this)\" class='btn btn-xs btn-danger'><i class='glyphicon glyphicon-remove'></i></a></td>";
+                    html += "</tr>";
+                    $("#tbodyPedido").append(html);
+                    AtualizarDados();
+                }
+            });
+        });
+    </script>
+    }

@@ -1,0 +1,119 @@
+﻿@model SmartVendas.Application.ViewModels.ClienteViewModel
+
+@{
+    ViewBag.Title = "Cliente - Detalhes";
+}
+
+
+<table class="table table-striped table-bordered" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SobreNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.SobreNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Cpf)
+            </td>
+            <td style="text-align: center">
+                @if (Model.Ativo)
+                {
+                    @:<span class="label label-table label-success">Ativo</span>
+                    }
+                else
+                {
+                    @:<span class="label label-table label-danger">Inativo</span>
+                    }
+            </td>
+            <td style="text-align: center">
+                <a href="@Url.Action("Edit", "Cliente", new {id = Model.ClienteId})" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                @if (Model.Ativo)
+                {
+                    <a href="@Url.Action("Index", "Venda", new {cliente = Model.ClienteId})" class="btn btn-warning btn-xs"><i class="fa fa-plus-circle"></i> Novo Pedido</a>
+                }
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr />
+
+<h4>Pedidos</h4>
+@foreach (var venda in Model.PedidoList)
+{
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th style="text-align: center; font-weight: 700">Data Pedido</th>
+                <th style="text-align: center; font-weight: 700">Resumo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center; vertical-align: middle; font-weight: 700">
+                    @venda.DataCadastro
+                </td>
+                <td>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Valor</th>
+                                <th>Quantidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in venda.ProdutoVendaList)
+                            {
+                                <tr>
+                                    <td>
+                                        @p.Produto.Nome
+                                    </td>
+                                    <td>
+                                        @p.Valor
+                                    </td>
+                                    <td>
+                                        @p.Quantidade
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+}
+
+<p>
+    <a href="@Url.Action("Index", "Cliente")" class="btn btn-primary">Voltar</a>
+</p>

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B918FAB6-3814-4585-831C-9DAF11980777}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartVendas.Domain</RootNamespace>
+    <AssemblyName>SmartVendas.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\CadastroGeral\Ncm.cs" />
+    <Compile Include="Entities\CadastroGeral\UnidadeMedida.cs" />
+    <Compile Include="Entities\Caixa\Caixa.cs" />
+    <Compile Include="Entities\Caixa\LancamentoCaixa.cs" />
+    <Compile Include="Entities\Cliente\Cliente.cs" />
+    <Compile Include="Entities\Nfce\DadosItens.cs" />
+    <Compile Include="Entities\Nfce\DadosNota.cs" />
+    <Compile Include="Entities\Nfce\Duplicata.cs" />
+    <Compile Include="Entities\Pedido\Pedido.cs" />
+    <Compile Include="Entities\Pedido\StatusPedido.cs" />
+    <Compile Include="Entities\ProdutoVenda\ProdutoVenda.cs" />
+    <Compile Include="Entities\Usuario\TipoUsuario.cs" />
+    <Compile Include="Entities\Usuario\Usuario.cs" />
+    <Compile Include="Entities\Produto\Produto.cs" />
+    <Compile Include="Entities\Produto\TipoProduto.cs" />
+    <Compile Include="Entities\Venda\TipoVenda.cs" />
+    <Compile Include="Entities\Venda\Venda.cs" />
+    <Compile Include="Enumerators\TipoLancamentoCaixa.cs" />
+    <Compile Include="Exceptions\CustomException.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\ReadOnly\Cliente\IClienteReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ReadOnly\Pedido\IPedidoReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ReadOnly\ProdutoVenda\IProdutoVendaReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ReadOnly\Produto\IProdutoReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ReadOnly\Produto\ITipoProdutoReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ReadOnly\Usuario\ITipoUsuarioReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ReadOnly\Usuario\IUsuarioReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ReadOnly\Venda\ITipoVendaReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ReadOnly\Venda\IVendaReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\CadastroGeral\INcmRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\CadastroGeral\IUnidadeMedidaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\Caixa\ICaixaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\Caixa\ILancamentoCaixaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\Cliente\IClienteRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\Pedido\IPedidoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\ProdutoVenda\IProdutoVendaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\Produto\IProdutoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\Produto\ITipoProdutoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\Usuario\ITipoUsuarioRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\Usuario\IUsuarioRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\Venda\ITipoVendaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\Repository\Venda\IVendaRepository.cs" />
+    <Compile Include="Interfaces\Services\CadastroGeral\INcmService.cs" />
+    <Compile Include="Interfaces\Services\CadastroGeral\IUnidadeMedidaService.cs" />
+    <Compile Include="Interfaces\Services\Caixa\ICaixaService.cs" />
+    <Compile Include="Interfaces\Services\Caixa\ILancamentoCaixaService.cs" />
+    <Compile Include="Interfaces\Services\Cliente\IClienteService.cs" />
+    <Compile Include="Interfaces\Services\IServiceBase.cs" />
+    <Compile Include="Interfaces\Services\Pedido\IPedidoService.cs" />
+    <Compile Include="Interfaces\Services\ProdutoVenda\IProdutoVendaService.cs" />
+    <Compile Include="Interfaces\Services\Produto\IProdutoService.cs" />
+    <Compile Include="Interfaces\Services\Produto\ITipoProdutoService.cs" />
+    <Compile Include="Interfaces\Services\Usuario\ITipoUsuarioService.cs" />
+    <Compile Include="Interfaces\Services\Usuario\IUsuarioService.cs" />
+    <Compile Include="Interfaces\Services\Venda\ITipoVendaService.cs" />
+    <Compile Include="Interfaces\Services\Venda\IVendaService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CadastroGeral\NcmService.cs" />
+    <Compile Include="Services\CadastroGeral\UnidadeMedidaService.cs" />
+    <Compile Include="Services\Caixa\CaixaService.cs" />
+    <Compile Include="Services\Caixa\LancamentoCaixaService.cs" />
+    <Compile Include="Services\Cliente\ClienteService.cs" />
+    <Compile Include="Services\Pedido\PedidoService.cs" />
+    <Compile Include="Services\ProdutoVenda\ProdutoVendaService.cs" />
+    <Compile Include="Services\Produto\ProdutoService.cs" />
+    <Compile Include="Services\Produto\TipoProdutoService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Services\Usuario\TipoUsuarioService.cs" />
+    <Compile Include="Services\Usuario\UsuarioService.cs" />
+    <Compile Include="Services\Venda\TipoVendaService.cs" />
+    <Compile Include="Services\Venda\VendaService.cs" />
+    <Compile Include="ValueObjects\ValidationError.cs" />
+    <Compile Include="ValueObjects\ValidationResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\Repositories\ADO\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

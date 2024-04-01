@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@ViewBag.Title - SmartVendas</title>
+    
+    <link href="~/Content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    
+    @RenderSection("styles", required: false)
+
+    <link href="~/Content/build/css/custom.min.css" rel="stylesheet" />
+</head>
+<body class="nav-md">
+
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"> <span>SmartVendas</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile">
+                        <div class="profile_pic">
+                            <img src="@Url.Content("~/images/img.png")" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Bem-Vindo,</span>
+                            <h2>
+                                @if (!User.Identity.IsAuthenticated)
+                                {
+                                    FormsAuthentication.RedirectToLoginPage();
+                                }
+                                @User.Identity.Name
+                            </h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>Menu</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">Dashboard</a></li>
+                                        <li>
+                                            <a>Pedido<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li>
+                                                    <a href="@Url.Action("Create", "Pedido")">Cadastrar</a>
+                                                </li>
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("Index", "Pedido")">Todos</a>
+                                                </li>
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("PedidosDoDia", "Pedido")">Do Dia</a>
+                                                </li>
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("PedidosAguardando", "Pedido")">Aguardando</a>
+                                                </li>
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("PedidosEmProducao", "Pedido")">Em Produção</a>
+                                                </li>
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("PedidosFinalizados", "Pedido")">Finalizados</a>
+                                                </li>
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("PedidosCancelados", "Pedido")">Cancelados</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a>Caixa<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li>
+                                                    <a href="@Url.Action("AbrirCaixa", "Caixa")">Abrir Caixa</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("FechamentoCaixa", "Caixa")">Fechar Caixa</a>
+                                                </li>
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("LancamentoManual", "Caixa")">Lançamento Manual</a>
+                                                </li>
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("Index", "Caixa")">Relatório</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-edit"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a>Cliente<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("Index", "Cliente")">Consultar</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("Create", "Cliente")">Cadastrar</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a>Produto<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("Index", "Produto")">Consultar</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("Create", "Produto")">Cadastrar</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a>Usuário<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("Index", "Usuario")">Consultar</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("Create", "Usuario")">Cadastrar</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a>Unidade Medida<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("Index", "UnidadeMedida")">Consultar</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("Create", "UnidadeMedida")">Cadastrar</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a>Ncm<span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li class="sub_menu">
+                                                    <a href="@Url.Action("Index", "Ncm")">Consultar</a>
+                                                </li>
+                                                <li>
+                                                    <a href="@Url.Action("Create", "Ncm")">Cadastrar</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-desktop"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="@Url.Action("VendasEfetuadas", "Venda")">Vendas Efetuadas</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                       
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen" id="fullscreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="@Url.Content("~/images/img.png")" alt="">@User.Identity.Name
+                                    <span class="fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="javascript:;">Help</a></li>
+                                    <li><a href="#"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+
+                            <li role="presentation" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge bg-green">6</span>
+                                </a>
+                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="text-center">
+                                            <a>
+                                                <strong>Ver todos</strong>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                   
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>@ViewBag.Title</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li>
+                                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <a href="#">Settings 1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Settings 2</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    &copy; @DateTime.Now.Year - Desenvolvido por <a href="www.rtsolucoesweb.com">RT Soluções</a> 
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <script src="~/Content/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/Content/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/vendors/nprogress/nprogress.js"></script>
+    <script src="~/Content/vendors/fastclick/lib/fastclick.js"></script>
+    
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Content/build/js/custom.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#fullscreen").click(function () {
+                    if (!document.fullscreenElement && 
+                        !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {  // current working methods
+                        if (document.documentElement.requestFullscreen) {
+                            document.documentElement.requestFullscreen();
+                        } else if (document.documentElement.msRequestFullscreen) {
+                            document.documentElement.msRequestFullscreen();
+                        } else if (document.documentElement.mozRequestFullScreen) {
+                            document.documentElement.mozRequestFullScreen();
+                        } else if (document.documentElement.webkitRequestFullscreen) {
+                            document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+                        }
+                    } else {
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                        } else if (document.msExitFullscreen) {
+                            document.msExitFullscreen();
+                        } else if (document.mozCancelFullScreen) {
+                            document.mozCancelFullScreen();
+                        } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                        }
+                    }
+            });
+        });
+    </script>
+</body>
+</html>

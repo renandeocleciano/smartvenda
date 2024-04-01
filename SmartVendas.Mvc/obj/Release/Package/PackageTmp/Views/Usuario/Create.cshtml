@@ -1,0 +1,186 @@
+﻿@model SmartVendas.Application.ViewModels.UsuarioViewModel
+
+@{
+    ViewBag.Title = "Usuário = Cadastrar";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal form-label-left">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.Label("Tipo Usuário", htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownList("TipoUsuarioId", (SelectList)ViewBag.TipoUsuarioId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TipoUsuarioId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SobreNome, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.SobreNome, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.SobreNome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cpf, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cep, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Logradouro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Complemento, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Complemento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ativo, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="checkbox">
+                    <label>
+                        @Html.EditorFor(model => model.Ativo, new { htmlAttributes = new { @class = "flat" } })
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <a href="@Url.Action("Index", "Usuario")" class="btn btn-primary">Voltar</a>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+
+@section styles{
+    <link href="~/Content/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
+}
+
+
+@section scripts{
+    <script src="~/Content/vendors/iCheck/icheck.min.js"></script>
+    <script src="~/Content/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#Cpf").inputmask("999.999.999-99");
+            $("#Telefone").inputmask("(99)99999-9999");
+            $("#Cep").inputmask("99999-999");
+
+            $("#Cep").change(function () {
+                var cep_code = $(this).val();
+                if (cep_code.length <= 0) return;
+                $.get("http://apps.widenet.com.br/busca-cep/api/cep.json", { code: cep_code },
+                    function (result) {
+                        if (result.status != 1) {
+                            alert(result.message || "Houve um erro desconhecido");
+                            return;
+                        }
+                        $("input#Cep").val(result.code);
+                        $("input#Cidade").val(result.city);
+                        $("input#Bairro").val(result.district);
+                        $("input#Logradouro").val(result.address);
+                    });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<SmartVendas.Application.ViewModels.VendaViewModel>
+
+@{
+    ViewBag.Title = "Relatório - Vendas Efetuadas";
+}
+
+<table class="table table-striped table-bordered" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Cliente")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th>
+                @Html.DisplayName("Detalhes")
+            </th>
+        </tr>
+    </thead>
+   <tbody>
+       @foreach (var item in Model)
+       {
+           <tr>
+               <td>
+                   @Html.DisplayFor(modelItem => item.Cliente.Nome)
+               </td>
+               <td>
+                   @Html.DisplayFor(modelItem => item.Cliente.Cpf)
+               </td>
+               <td>
+                   @Html.DisplayFor(modelItem => item.DataCadastro)
+               </td>
+               <td>
+                   <ul>
+                       @foreach (var detalhes in item.ProdutoVendaList)
+                       {
+                           <li>
+                               @string.Format("{2:0.##} - {0} - R$ {1}", detalhes.Produto.Nome, detalhes.Produto.Valor, detalhes.Quantidade)
+                           </li>
+                       }
+                   </ul>
+               </td>
+           </tr>
+       }
+   </tbody>
+</table>
+
+
+@section styles{
+    <link href="~/Content/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+}
+
+
+@section scripts{
+
+    <script src="~/Content/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table').dataTable({
+                "responsive": true,
+                "language": {
+                    "paginate": {
+                        "previous": '<i class="fa fa-angle-left"></i>',
+                        "next": '<i class="fa fa-angle-right"></i>'
+                    },
+                    "lengthMenu": "Exibindo _MENU_ registros por página",
+                    "zeroRecords": "Não encontrado - desculpe",
+                    "info": "Exibindo pagina _PAGE_ de _PAGES_",
+                    "infoEmpty": "Sem registros disponíveis",
+                    "infoFiltered": "(filtrados de um total de _MAX_ registros)",
+                    "search": "Filtrar: "
+                }
+            });
+        })
+    </script>
+}

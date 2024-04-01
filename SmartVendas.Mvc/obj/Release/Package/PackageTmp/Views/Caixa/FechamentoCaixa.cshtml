@@ -1,0 +1,59 @@
+﻿@model SmartVendas.Application.ViewModels.CaixaViewModel
+
+@{
+    ViewBag.Title = "FechamentoCaixa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <h5>Deseja realmente fechar o caixa?</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Abertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Abertura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaldoInicial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaldoInicial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entradas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entradas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Saidas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Saidas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Fechar Caixa" class="btn btn-success" />
+        </div>
+    }
+</div>

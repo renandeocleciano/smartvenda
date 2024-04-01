@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Apresentação", "0 - Apresentação", "{806A9CFC-1065-4B38-91A4-A65AA18BB85C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4  - Infra", "4  - Infra", "{DCC3DD37-7D81-4592-8E6D-072047DD5638}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Services", "1 - Services", "{7221C4F2-B7E4-4F0F-ACD5-2A2A87F36ACA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{EAC537A1-C321-4F1E-AC9E-19468DCA7FF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{095264C8-8EB9-4089-9F47-AC292E262454}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{03BD1E06-D893-4ABC-8582-28CCC4A305B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{6B6CB581-B65F-4279-8798-47A8DD15FB7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartVendas.Infra.Data", "SmartVendas.Infra.Data\SmartVendas.Infra.Data.csproj", "{0021E18F-EEE1-4A1C-BAB7-B4A2516FC036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartVendas.Domain", "SmartVendas.Domain\SmartVendas.Domain.csproj", "{B918FAB6-3814-4585-831C-9DAF11980777}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartVendas.Application", "SmartVendas.Application\SmartVendas.Application.csproj", "{CA0B51B4-5CAC-44E5-8855-9A279DE0FA29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartVendas.Mvc", "SmartVendas.Mvc\SmartVendas.Mvc.csproj", "{A6B9D528-499A-4C77-8EB6-D402FCDC5AB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartVendas.Infra.CrossCutting.Ioc", "SmartVendas.Infra.CrossCutting.Ioc\SmartVendas.Infra.CrossCutting.Ioc.csproj", "{CFF51AA2-B898-413F-AC32-FD609B276192}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartVendas.Infra.CrossCutting.MvcFilters", "SmartVendas.Infra.CrossCutting.MvcFilters\SmartVendas.Infra.CrossCutting.MvcFilters.csproj", "{AE58CB92-100F-4FEA-8A5B-1584226C279E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartVendas.Infra.CrossCutting.Utils", "SmartVendas.Infra.CrossCutting.Utils\SmartVendas.Infra.CrossCutting.Utils.csproj", "{CCCEFAFB-F50B-4646-A886-44ADEB38509D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0021E18F-EEE1-4A1C-BAB7-B4A2516FC036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0021E18F-EEE1-4A1C-BAB7-B4A2516FC036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0021E18F-EEE1-4A1C-BAB7-B4A2516FC036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0021E18F-EEE1-4A1C-BAB7-B4A2516FC036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B918FAB6-3814-4585-831C-9DAF11980777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B918FAB6-3814-4585-831C-9DAF11980777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B918FAB6-3814-4585-831C-9DAF11980777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B918FAB6-3814-4585-831C-9DAF11980777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA0B51B4-5CAC-44E5-8855-9A279DE0FA29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA0B51B4-5CAC-44E5-8855-9A279DE0FA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA0B51B4-5CAC-44E5-8855-9A279DE0FA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA0B51B4-5CAC-44E5-8855-9A279DE0FA29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6B9D528-499A-4C77-8EB6-D402FCDC5AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6B9D528-499A-4C77-8EB6-D402FCDC5AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6B9D528-499A-4C77-8EB6-D402FCDC5AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6B9D528-499A-4C77-8EB6-D402FCDC5AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFF51AA2-B898-413F-AC32-FD609B276192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF51AA2-B898-413F-AC32-FD609B276192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF51AA2-B898-413F-AC32-FD609B276192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF51AA2-B898-413F-AC32-FD609B276192}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE58CB92-100F-4FEA-8A5B-1584226C279E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE58CB92-100F-4FEA-8A5B-1584226C279E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE58CB92-100F-4FEA-8A5B-1584226C279E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE58CB92-100F-4FEA-8A5B-1584226C279E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCCEFAFB-F50B-4646-A886-44ADEB38509D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCEFAFB-F50B-4646-A886-44ADEB38509D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCEFAFB-F50B-4646-A886-44ADEB38509D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCEFAFB-F50B-4646-A886-44ADEB38509D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03BD1E06-D893-4ABC-8582-28CCC4A305B5} = {DCC3DD37-7D81-4592-8E6D-072047DD5638}
+		{6B6CB581-B65F-4279-8798-47A8DD15FB7C} = {DCC3DD37-7D81-4592-8E6D-072047DD5638}
+		{0021E18F-EEE1-4A1C-BAB7-B4A2516FC036} = {03BD1E06-D893-4ABC-8582-28CCC4A305B5}
+		{B918FAB6-3814-4585-831C-9DAF11980777} = {095264C8-8EB9-4089-9F47-AC292E262454}
+		{CA0B51B4-5CAC-44E5-8855-9A279DE0FA29} = {EAC537A1-C321-4F1E-AC9E-19468DCA7FF9}
+		{A6B9D528-499A-4C77-8EB6-D402FCDC5AB7} = {806A9CFC-1065-4B38-91A4-A65AA18BB85C}
+		{CFF51AA2-B898-413F-AC32-FD609B276192} = {6B6CB581-B65F-4279-8798-47A8DD15FB7C}
+		{AE58CB92-100F-4FEA-8A5B-1584226C279E} = {6B6CB581-B65F-4279-8798-47A8DD15FB7C}
+		{CCCEFAFB-F50B-4646-A886-44ADEB38509D} = {6B6CB581-B65F-4279-8798-47A8DD15FB7C}
+	EndGlobalSection
+EndGlobal

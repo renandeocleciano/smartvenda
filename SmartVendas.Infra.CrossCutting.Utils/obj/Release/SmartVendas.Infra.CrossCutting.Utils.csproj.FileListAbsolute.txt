@@ -1,0 +1,6 @@
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Infra.CrossCutting.Utils\bin\Release\SmartVendas.Infra.CrossCutting.Utils.dll
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Infra.CrossCutting.Utils\bin\Release\SmartVendas.Infra.CrossCutting.Utils.pdb
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Infra.CrossCutting.Utils\obj\Release\SmartVendas.Infra.CrossCutting.Utils.csprojResolveAssemblyReference.cache
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Infra.CrossCutting.Utils\obj\Release\SmartVendas.Infra.CrossCutting.Utils.dll
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Infra.CrossCutting.Utils\obj\Release\SmartVendas.Infra.CrossCutting.Utils.pdb
+C:\Projetos\SmartVendas\Web\Solution\SmartVendas.Infra.CrossCutting.Utils\bin\Release\Vinco.iContNFe.NFeIntegratorInterOpCOMLess.dll

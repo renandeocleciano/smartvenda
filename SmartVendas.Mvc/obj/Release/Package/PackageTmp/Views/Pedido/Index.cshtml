@@ -1,0 +1,176 @@
+﻿@model IEnumerable<SmartVendas.Application.ViewModels.PedidoViewModel>
+
+@{
+    ViewBag.Title = "Pedidos - Consultar";
+}
+
+<table class="table table-striped table-bordered" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.Nome)
+            </th>
+            <th>
+                @Html.DisplayName("Status")
+            </th>
+            <th>
+                @Html.DisplayName("Inicio")
+            </th>
+            <th>
+                @Html.DisplayName("Producao")
+            </th>
+            <th>
+                @Html.DisplayName("Finalizado")
+            </th>
+            <th>
+                Pago?
+            </th>
+            <th>
+                @Html.DisplayName("Produtos")
+            </th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Nome) @Html.DisplayFor(modelItem => item.Cliente.SobreNome)
+                </td>
+                <td align="center">
+                    @if (item.Status == SmartVendas.Application.ViewModels.StatusPedidoViewModel.Aguardando)
+                    {
+                        @:<div id="circle" class="bg-orange"></div>
+                    }
+                    else if (item.Status == SmartVendas.Application.ViewModels.StatusPedidoViewModel.Produção)
+                    {
+                        @:<div id="circle" class="bg-blue"></div>
+                    }
+                    else if (item.Status == SmartVendas.Application.ViewModels.StatusPedidoViewModel.Cancelado)
+                    {
+                        @:<div id="circle" class="bg-red"></div>
+                    }
+                    else
+                    {
+                        @:<div id="circle" class="bg-green"></div>
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DhInicio)
+                </td>
+                @if (item.Status == SmartVendas.Application.ViewModels.StatusPedidoViewModel.Aguardando || item.Status == SmartVendas.Application.ViewModels.StatusPedidoViewModel.Cancelado)
+                {
+                    <td></td>
+                    <td></td>
+
+                }
+                @if (item.Status == SmartVendas.Application.ViewModels.StatusPedidoViewModel.Produção)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DhProducao)
+                    </td>
+                    <td></td>
+
+                }
+                @if (item.Status == SmartVendas.Application.ViewModels.StatusPedidoViewModel.Finalizado)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DhProducao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DhFinalizado)
+                    </td>
+                }
+                <td style="text-align: center">
+                    @if (item.Pago)
+                    {
+                        @:<span class="label label-table label-success">Sim</span>
+                    }
+                    else
+                    {
+                        @:<span class="label label-table label-danger">Não</span>
+                    }
+                </td>
+
+                <td>
+                    <ul>
+                        @foreach (var detalhes in item.ProdutoVendaList)
+                        {
+                            <li>
+                                @string.Format("{2:0.##} - {0} - R$ {1}", detalhes.Produto.Nome, detalhes.Produto.Valor, detalhes.Quantidade)
+                            </li>
+                        }
+                    </ul>
+                </td>
+                <td style="text-align: center">
+
+                    @if (item.Status == SmartVendas.Application.ViewModels.StatusPedidoViewModel.Aguardando)
+                    {
+                        <a href="@Url.Action("SetStatusEmProducao", "Pedido", new {pedidoId = item.PedidoId})" class="btn btn-warning btn-xs"><i class="fa fa-play-circle"></i></a>
+                    }
+
+                    @if (item.Status == SmartVendas.Application.ViewModels.StatusPedidoViewModel.Produção)
+                    {
+                        <a href="@Url.Action("SetStatusFinalizado", "Pedido", new {pedidoId = item.PedidoId})" class="btn btn-info btn-xs"><i class="fa fa-play-circle"></i></a>
+                    }
+
+
+                    @if (!item.Pago && item.Status != SmartVendas.Application.ViewModels.StatusPedidoViewModel.Cancelado)
+                    {
+                        if (item.Status != SmartVendas.Application.ViewModels.StatusPedidoViewModel.Finalizado)
+                        {
+                            <a href="@Url.Action("SetStatusCancelado", "Pedido", new {pedidoId = item.PedidoId})" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></a>
+                        }
+
+                        <a href="@Url.Action("Create", "Venda", new {pedidoId = item.PedidoId})" class="btn btn-success btn-xs"><i class="fa fa-money"></i></a>
+                    }
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+@section styles{
+    <link href="~/Content/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <style>
+        #circle {
+            width: 30px;
+            height: 30px;
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
+        }
+    </style>
+}
+
+@section scripts{
+
+    <script src="~/Content/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table').dataTable({
+                "responsive": true,
+                "language": {
+                    "paginate": {
+                        "previous": '<i class="fa fa-angle-left"></i>',
+                        "next": '<i class="fa fa-angle-right"></i>'
+                    },
+                    "lengthMenu": "Exibindo _MENU_ registros por página",
+                    "zeroRecords": "Não encontrado - desculpe",
+                    "info": "Exibindo pagina _PAGE_ de _PAGES_",
+                    "infoEmpty": "Sem registros disponíveis",
+                    "infoFiltered": "(filtrados de um total de _MAX_ registros)",
+                    "search": "Filtrar: "
+                }
+            });
+        })
+    </script>
+
+}

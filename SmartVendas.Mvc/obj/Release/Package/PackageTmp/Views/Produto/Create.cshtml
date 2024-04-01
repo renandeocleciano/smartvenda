@@ -1,0 +1,93 @@
+﻿@model SmartVendas.Application.ViewModels.ProdutoViewModel
+
+@{
+    ViewBag.Title = "Produto - Cadastrar";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal form-label-left">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TipoProdutoId, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownList("TipoProdutoId", (SelectList)ViewBag.TipoProdutoId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TipoProdutoId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valor, htmlAttributes: new {@class = "control-label col-md-3 col-sm-3 col-xs-12"})
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @{ Html.EnableClientValidation(false); }
+                @Html.EditorFor(model => model.Valor, new {htmlAttributes = new {@class = "form-control col-md-7 col-xs-12"}})
+                @{ Html.EnableClientValidation(true); }
+                @Html.ValidationMessageFor(model => model.Valor, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnidadeMedidaId, htmlAttributes: new {@class = "control-label col-md-3 col-sm-3 col-xs-12"})
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownList("UnidadeMedidaId", (SelectList) ViewBag.UnidadeMedidaId, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.UnidadeMedidaId, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NcmId, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownList("NcmId", (SelectList)ViewBag.NcmId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NcmId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Disponivel, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="checkbox">
+                    <label>
+                        @Html.EditorFor(model => model.Disponivel, new { htmlAttributes = new { @class = "flat" } })
+                    </label>
+                    @Html.ValidationMessageFor(model => model.Disponivel, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <a href="@Url.Action("Index", "Produto")" class="btn btn-primary">Voltar</a>
+                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+}
+
+
+@section styles{
+    <link href="~/Content/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
+}
+
+
+@section scripts{
+    <script src="~/Content/vendors/iCheck/icheck.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+}
